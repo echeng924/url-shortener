@@ -1,15 +1,10 @@
-<h1>Will be a form</h1>
+<h1>Shorten your links</h1>
 
 
 <%= form_for @link do |f| %>
   <p>
-    <%= f.label :long_url %><br>
-    <%= f.text_field :long_url %>
-  </p>
- 
-  <p>
+    <%= f.text_field :long_url, placeholder: "Enter the url you want to shorten"%>
     <%= f.submit %>
   </p>
 <% end %>
 
-<h3>Top 100 Links</h3>

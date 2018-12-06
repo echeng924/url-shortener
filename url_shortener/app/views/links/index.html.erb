@@ -1,0 +1,6 @@
+<h1>Most viewed links</h1>
+<div>
+    <% @links.each do |link| %>
+        <p><%= link_to link_path(link.id) %></p>
+    <% end %>
+</div>

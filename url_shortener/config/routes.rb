@@ -55,4 +55,7 @@ Rails.application.routes.draw do
   #   end
 
     resources :links
+
+    get 'short-url/:short_url' => 'links#show_by_short_url', as: :show_by_short_url
+    get 'show-modified-route/:short_url' => 'links#show_modified_route', as: :show_modified_route
 end
