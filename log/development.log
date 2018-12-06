@@ -1,0 +1,2473 @@
+  [1m[36m (84.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (2.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35mSQL (1.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (20.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('0')
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2018-12-05 22:06:59 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 28ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLinks (20181206031130)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (49.5ms)[0m  [1mCREATE TABLE "links" ("id" serial primary key, "short_url" character varying, "long_url" character varying) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20181206031130"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'links'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2018-12-05 22:30:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 24ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/link/new" for ::1 at 2018-12-05 22:30:19 -0500
+
+ActionController::RoutingError (No route matches [GET] "/link/new"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (129.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (107.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (225.3ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:30:23 -0500
+
+ActionController::RoutingError (No route matches [GET] "/links/new"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (88.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (84.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (193.8ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:32:47 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 552ms (Views: 540.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2018-12-05 22:32:48 -0500
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for ::1 at 2018-12-05 22:32:48 -0500
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2018-12-05 22:32:48 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2018-12-05 22:32:48 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2018-12-05 22:32:48 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:35:28 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (81.2ms)
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `form_with' for #<#<Class:0x007f8797ade988>:0x007f879c288f18>):
+    1: <h1>Will be a form</h1>
+    2: 
+    3: 
+    4: <%= form_with scope: :link, local: true do |form| %>
+    5:   <p>
+    6:     <%= form.label :long_url %><br>
+    7:     <%= form.text_field :long_url %>
+  app/views/links/new.html.erb:4:in `_app_views_links_new_html_erb__3656194090031227607_70110208577600'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (114.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (235.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:38:03 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (18.3ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 5.1ms)
+
+ActionView::Template::Error (undefined method `form_with' for #<#<Class:0x007f8798124fb8>:0x007f879badb360>):
+    1: <h1>Will be a form</h1>
+    2: 
+    3: 
+    4: <%= form_with @link do |f| %>
+    5:   <p>
+    6:     <%= f.label :long_url %><br>
+    7:     <%= f.text_field :long_url %>
+  app/views/links/new.html.erb:4:in `_app_views_links_new_html_erb__3656194090031227607_70110204576400'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (107.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (86.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (198.2ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:38:05 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `form_with' for #<#<Class:0x007f8798124fb8>:0x007f879bd0cdf0>):
+    1: <h1>Will be a form</h1>
+    2: 
+    3: 
+    4: <%= form_with @link do |f| %>
+    5:   <p>
+    6:     <%= f.label :long_url %><br>
+    7:     <%= f.text_field :long_url %>
+  app/views/links/new.html.erb:4:in `_app_views_links_new_html_erb__3656194090031227607_70110204576400'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (122.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (100.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (226.5ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:39:45 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (119.3ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x007f8798124fb8>:0x007f87991ebae0>):
+     8:   </p>
+     9:  
+    10:   <p>
+    11:     <%= form.submit %>
+    12:   </p>
+    13: <% end %>
+  app/views/links/new.html.erb:11:in `block in _app_views_links_new_html_erb__3656194090031227607_70110183112900'
+  app/views/links/new.html.erb:4:in `_app_views_links_new_html_erb__3656194090031227607_70110183112900'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (108.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (97.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (201.9ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:39:53 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:40:32 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2018-12-05 22:52:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 26ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:52:46 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 315ms (Views: 297.8ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/links" for ::1 at 2018-12-05 22:53:02 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8nt+pGMMNFgAEKp2XATdJuRwjzhrL0SvyHoCII/ok+EBFA8sFs2ZiMhIVQGF/OljPEMJi2QQnnuDIMkU1JbPWQ==", "link"=>{"long_url"=>"kitsplit"}, "commit"=>"Create Link"}
+Completed 500 Internal Server Error in 23426ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template links/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/elizabeth/Documents/challenges/url-shortener/url_shortener/app/views"
+):
+  actionview (4.2.7.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.7.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.7.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.7.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.7.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.7.1) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.7.1) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.7.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.7.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.7.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.7.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.7.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.7.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.7.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.7.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.7.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.7.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.7.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.11) lib/rack/etag.rb:24:in `call'
+  rack (1.6.11) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.11) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.11) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.11) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.7.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (118.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (115.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (240.3ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 22:53:31 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-05 23:59:55 -0500
+Processing by LinksController#new as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/elizabeth/Documents/challenges/url-shortener/url_shortener/app/models/link.rb:3: syntax error, unexpected ':', expecting keyword_end
+    before_create: :generate_random_slug
+                  ^):
+  app/models/link.rb:3: syntax error, unexpected ':', expecting keyword_end
+  app/controllers/links_controller.rb:3:in `new'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (102.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (86.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (195.3ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:00:11 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 51ms (Views: 37.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:00:16 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 35ms (Views: 25.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:03:52 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 160ms (Views: 158.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-a63caf8c0a4c44db35c53ade9a8dc76bdb56f86771a14d437e306b5a7f48a7e3.css?body=1" for ::1 at 2018-12-06 00:03:52 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:04:53 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-ee5e1d4953438b70798e4c325e4639a333fc9fc0adb9ac7017f06cdc18257517.css?body=1" for ::1 at 2018-12-06 00:04:53 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:04:54 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:05:51 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 44ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-c76921755ba9bf24c50083037c6fdb01360b6879424364fa3dfe2284c145991d.css?body=1" for ::1 at 2018-12-06 00:05:51 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:05:52 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 39ms (Views: 37.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:06:38 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 43ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-5ea50f5e227e9a1f5271927f48cad44f7e5c38df5091886bd4e4085b660967ac.css?body=1" for ::1 at 2018-12-06 00:06:38 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:07:20 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:07:37 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:08:51 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:09:00 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:10:26 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 57ms (Views: 55.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-5294e2f476a656867d8ecfe4b002f786bb31dc4a537473a9ce4604e17c094b80.css?body=1" for ::1 at 2018-12-06 00:10:26 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:11:23 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 55ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-ae0bbcc21ed15bf7ee96673d12e5f86e9d24ae0fae5913e03b79b1d1700abbe6.css?body=1" for ::1 at 2018-12-06 00:11:23 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:12:11 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 53ms (Views: 51.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-cd9a79b3417d7d119bfb426eaea5fb8c9f1fcd19cdf5a7e2791b40876261692e.css?body=1" for ::1 at 2018-12-06 00:12:11 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:12:13 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:13:17 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 58ms (Views: 57.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-dc1f3060f204c7be2e2663ac0a21afd7b519ffeddeb50a0379a07044b34a232b.css?body=1" for ::1 at 2018-12-06 00:13:17 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:13:19 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:14:34 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 87ms (Views: 85.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 00:15:06 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AOZYijokr3Q9rcM5s26VTRkn5FSYy9asJC+d6huIyjLziSkCT+UCpPX1PE5qlqEIwRRi55f0DHhvdVbeQPaWig==", "link"=>{"long_url"=>""}, "commit"=>"Create Link"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template links/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/elizabeth/Documents/challenges/url-shortener/url_shortener/app/views"
+):
+  actionview (4.2.7.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.7.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.7.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.7.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.7.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.7.1) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.7.1) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.7.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.7.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.7.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.7.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.7.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.7.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.7.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.7.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.7.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.7.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.7.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.7.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.11) lib/rack/etag.rb:24:in `call'
+  rack (1.6.11) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.11) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.11) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.11) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.7.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (141.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (135.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (310.4ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:16:14 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 44ms (Views: 43.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-36e8f8bedcbab34986187d6daeade2734b4b555723e7ac37f007cd9380c69b8a.css?body=1" for ::1 at 2018-12-06 00:16:14 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:17:27 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-e2cc6a96da76c8fc129e100ceea8947b0170aae8356b6932cad2de42667e7148.css?body=1" for ::1 at 2018-12-06 00:17:27 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 00:18:31 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 52ms (Views: 50.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/list.self-0201f546f636b1a16669ac5f083fb5aff403be863e17156c97b75b439f6726be.css?body=1" for ::1 at 2018-12-06 00:18:31 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddClickCountToLinks (20181206141313)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddClickCountToLinks (20181206141313)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (60.9ms)[0m  [1mALTER TABLE "links" ADD "click_count" integer DEFAULT 0[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20181206141313"]]
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'links'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:21:58 -0500
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by LinksController#new as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/elizabeth/Documents/challenges/url-shortener/url_shortener/app/models/link.rb:5: syntax error, unexpected ':', expecting keyword_end
+    before_create: :generate_random_slug
+                  ^):
+  app/models/link.rb:5: syntax error, unexpected ':', expecting keyword_end
+  app/controllers/links_controller.rb:7:in `new'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (119.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (136.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (323.4ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:22:30 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 149ms (Views: 107.8ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/assets/list.self-0201f546f636b1a16669ac5f083fb5aff403be863e17156c97b75b439f6726be.css?body=1" for ::1 at 2018-12-06 09:22:30 -0500
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:26:08 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 81ms (Views: 59.8ms | ActiveRecord: 11.7ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:26:13 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlehwKX/KbAHQ9OSTRdT/NIMraV/Hu2nn5vyiCQJSnpFONBI0D6EYM8bLOWU72e5Cj8rFnAhN3PUwTm8f3cWwg==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `original_url' for #<Link:0x007f8c79234210>):
+  app/controllers/links_controller.rb:13:in `create'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (105.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (87.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (196.6ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:26:58 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlehwKX/KbAHQ9OSTRdT/NIMraV/Hu2nn5vyiCQJSnpFONBI0D6EYM8bLOWU72e5Cj8rFnAhN3PUwTm8f3cWwg==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 9.6ms)
+
+TypeError (no implicit conversion of Array into Integer):
+  app/models/link.rb:15:in `[]'
+  app/models/link.rb:15:in `generate_random_slug'
+  app/controllers/links_controller.rb:13:in `create'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (123.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (114.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (256.7ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:28:56 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlehwKX/KbAHQ9OSTRdT/NIMraV/Hu2nn5vyiCQJSnpFONBI0D6EYM8bLOWU72e5Cj8rFnAhN3PUwTm8f3cWwg==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 8.8ms)
+
+SystemStackError (stack level too deep):
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/controllers/links_controller.rb:13:in `create'
+
+
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:30:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (30.8ms)
+Completed 200 OK in 472ms (Views: 451.6ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:30:45 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CYOoWkgDuG69Cm5m9BpVhnneubJzYpiEIChow8Z9+0z67NnSPcIVvnVSkREt4mHDoe0/AXxdQlBrcqP3nQOn9A==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.6ms)
+
+SystemStackError (stack level too deep):
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/models/link.rb:20:in `generate_random_slug'
+  app/controllers/links_controller.rb:13:in `create'
+
+
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:32:54 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 350ms (Views: 326.3ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:32:59 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cqhig5Au95LOGTcnydZbNg11jxZWHSp08umWO7zhnzOBxxML5e9aQgZByFAQLm9z1UYJpVki8KC5s10P55/Diw==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.5ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 93630ms (ActiveRecord: 4.6ms)
+
+SystemExit (exit):
+  app/models/link.rb:19:in `generate_random_slug'
+  app/controllers/links_controller.rb:13:in `create'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (279.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (57.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (487.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (135.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (358.4ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:34:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 301ms (Views: 281.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:34:59 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B0vAPAb/T3dZafUj5vZSGVuvW0fbIEWQ91cXGTIirbn0JLG0cz7ip5ExClQ/DmZcg5zd9NQfn0S8DdwtaVzxAQ==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (29.2ms)[0m  [1mINSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"[0m  [["long_url", "google.com"], ["short_url", "4RQy5X"]]
+  [1m[35m (3.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/links
+Completed 302 Found in 4231ms (ActiveRecord: 33.7ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:35:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.5ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 3.1ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"links"} missing required keys: [:id]):
+    1: <div>
+    2:     <% @links.each do |link| %>
+    3:         <p><%= link_to link_path %></p>
+    4:     <% end %>
+    5: </div>
+  app/views/links/index.html.erb:3:in `block in _app_views_links_index_html_erb___940325702103436665_70295499864960'
+  app/views/links/index.html.erb:2:in `_app_views_links_index_html_erb___940325702103436665_70295499864960'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (232.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (126.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (301.2ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:35:47 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 312ms (Views: 310.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:35:51 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irOeWVObJq7qpMaFmr+rZuCTkylorNy8O0y48XFVxO153O/RJlqLfiL8OfJDR58jOKAVmmeTBmhwFnPFKiuYVQ==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"  [["long_url", "google.com"], ["short_url", "ZPdv2G"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/links
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:35:51 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (1.5ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"links"} missing required keys: [:id]):
+    1: <div>
+    2:     <% @links.each do |link| %>
+    3:         <p><%= link_to link_path %></p>
+    4:     <% end %>
+    5: </div>
+  app/views/links/index.html.erb:3:in `block in _app_views_links_index_html_erb___940325702103436665_70295499864960'
+  app/views/links/index.html.erb:2:in `_app_views_links_index_html_erb___940325702103436665_70295499864960'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (122.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (241.2ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:36:10 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (0.5ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.5ms)
+  [1m[36mLink Load (1.6ms)[0m  [1mSELECT  "links".* FROM "links"  ORDER BY "links"."id" ASC LIMIT 1[0m
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:37:23 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.3ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 38ms (Views: 36.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:37:27 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:37:32 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.3ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.3ms)
+  [1m[35mLink Load (0.8ms)[0m  SELECT  "links".* FROM "links"  ORDER BY "links"."id" ASC LIMIT 1
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:39:28 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (2.4ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 44ms (Views: 40.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:39:32 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.3ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:40:20 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:41:12 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.4ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:42:39 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `clicked_count' for nil:NilClass):
+  app/controllers/links_controller.rb:19:in `show'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (40.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (155.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (107.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (244.5ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:43:02 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `clicked_count' for nil:NilClass):
+  app/controllers/links_controller.rb:19:in `show'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (183.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (105.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (253.1ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:43:23 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `clicked_count' for nil:NilClass):
+  app/controllers/links_controller.rb:19:in `show'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (114.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (88.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (198.9ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:44:29 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.8ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 3.8ms)
+
+NoMethodError (undefined method `clicked_count' for #<Link:0x007fdde9a3b708>):
+  app/controllers/links_controller.rb:20:in `show'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (116.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (100.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (237.5ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:44:53 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.7ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 1], ["id", 1]]
+  [1m[36m (8.9ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 17.9ms)
+
+NoMethodError (undefined method `long_url' for nil:NilClass):
+  app/controllers/links_controller.rb:22:in `show'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (118.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (94.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (223.1ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.4ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 2], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 11ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 3], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 5ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 4], ["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 20ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.9ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 5], ["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 6], ["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:12 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (1.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 7], ["id", 1]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 7ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/links/1" for ::1 at 2018-12-06 09:45:17 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLink Load (2.7ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 8], ["id", 1]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000google.com
+Completed 302 Found in 9ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:46:11 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 51ms (Views: 50.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:46:22 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3/XfJVI75N+tlBODW4FDPPt5WXhwEoHrEtXPyWCdI1Qsmq6tJ/pJD2XM7PSCeXd5I0rfy38tWz9ZjwT9O+N/7A==", "link"=>{"long_url"=>"https://google.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"[0m  [["long_url", "https://google.com"], ["short_url", "xWAJ01"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/links
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:46:22 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (0.8ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:46:24 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (0.4ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 32ms (Views: 30.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/links/3" for ::1 at 2018-12-06 09:46:50 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mLink Load (2.3ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2[0m  [["click_count", 1], ["id", 3]]
+  [1m[35m (1.9ms)[0m  COMMIT
+Redirected to https://google.com
+Completed 302 Found in 11ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2018-12-06 09:46:58 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.0ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:47:01 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (25.9ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (30.1ms)
+Completed 200 OK in 114ms (Views: 86.2ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/links/3" for ::1 at 2018-12-06 09:47:30 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 2], ["id", 3]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to https://google.com
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 3]]
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:51:59 -0500
+Processing by LinksController#index as HTML
+  [1m[35mLink Load (1.5ms)[0m  SELECT "links".* FROM "links"
+  Rendered links/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 80ms (Views: 60.7ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:52:15 -0500
+Processing by LinksController#index as HTML
+  Rendered links/index.html.erb within layouts/application (66.1ms)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/elizabeth/Documents/challenges/url-shortener/url_shortener/app/views/links/index.html.erb:3: syntax error, unexpected ',', expecting ')'
+...uffer.append=( "click on link", link_to link_path(link.id) )...
+...                               ^):
+  app/views/links/index.html.erb:3: syntax error, unexpected ',', expecting ')'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (161.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (202.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (429.2ms)
+
+
+Started GET "/links" for ::1 at 2018-12-06 09:52:36 -0500
+Processing by LinksController#index as HTML
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 40ms (Views: 39.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 09:58:48 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 222ms (Views: 202.4ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 09:58:55 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cLsXdeaRC0EO1wa7dJncwSVkegzLqxKBH293+jxhAvCD1Gb9k1CmkcaP+cytYeiE/Vf8v8SUyFVUNbzOZx9eSA==", "link"=>{"long_url"=>"kitsplit.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"[0m  [["long_url", "kitsplit.com"], ["short_url", "qSsg8z"]]
+  [1m[35m (6.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/show-modified-route
+Completed 302 Found in 13ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/show-modified-route" for ::1 at 2018-12-06 09:58:55 -0500
+Processing by LinksController#show_modified_route as HTML
+  [1m[36mLink Load (0.5ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=):
+  app/controllers/links_controller.rb:37:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (141.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (102.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (241.1ms)
+
+
+Started GET "/show-modified-route" for ::1 at 2018-12-06 09:59:14 -0500
+Processing by LinksController#show_modified_route as HTML
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 20ms (ActiveRecord: 12.8ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=):
+  app/controllers/links_controller.rb:37:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (108.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (101.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (226.9ms)
+
+
+Started GET "/show-modified-route" for ::1 at 2018-12-06 10:00:07 -0500
+
+ActionController::RoutingError (No route matches [GET] "/show-modified-route"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/elizabeth/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (157.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (102.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (249.8ms)
+
+
+Started GET "/show-modified-route/1" for ::1 at 2018-12-06 10:00:22 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 91ms (Views: 58.9ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 10:00:48 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 46ms (Views: 31.6ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 10:00:54 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JnDxAsr9yGHF9Zo37cH1KbD9nCEsk0KK1pDzydXFdcTVH4CKvzxlsQ2tZUA0OcFsaM4akiOsmF6dyjj9jrspfA==", "link"=>{"long_url"=>"kitsplit.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"[0m  [["long_url", "kitsplit.com"], ["short_url", "X5Q2hY"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.2ms)
+
+NoMethodError (undefined method `show_modified_route_path' for #<LinksController:0x007fddeb022710>):
+  app/controllers/links_controller.rb:16:in `create'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (135.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (99.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (224.1ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 10:03:13 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JnDxAsr9yGHF9Zo37cH1KbD9nCEsk0KK1pDzydXFdcTVH4CKvzxlsQ2tZUA0OcFsaM4akiOsmF6dyjj9jrspfA==", "link"=>{"long_url"=>"kitsplit.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"  [["long_url", "kitsplit.com"], ["short_url", "ZyZTX5"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/show-modified-route/6
+Completed 302 Found in 39ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:03:13 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 48ms (Views: 44.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:05:59 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 48ms (Views: 45.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:06:03 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:37:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (108.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (98.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (254.3ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:06:19 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (1.0ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 65ms (Views: 60.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/links/6" for ::1 at 2018-12-06 10:06:21 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (2.4ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (2.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 1], ["id", 6]]
+  [1m[36m (4.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://kitsplit.com
+Completed 302 Found in 16ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/links/6" for ::1 at 2018-12-06 10:06:21 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.6ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 2], ["id", 6]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://kitsplit.com
+Completed 302 Found in 4ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:10:01 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.7ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 87ms (Views: 69.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:10:24 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (1.4ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 68ms (Views: 64.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:11:10 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (2.1ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 78ms (Views: 69.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:12:22 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (0.8ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (8.7ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms)
+
+ActionView::Template::Error (undefined method `path' for "http://localhost:3000/show-modified-route/6":String):
+    1: <a href="/links/<%= @link.short_url %>">http://localhost:3000/links/<%= request.url.path + @link.short_url %></a>
+  app/views/links/show_modified_route.html.erb:1:in `_app_views_links_show_modified_route_html_erb__2524087017781051093_70295549532620'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (57.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (185.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (2.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (146.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (403.9ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:12:34 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    1: <a href="/links/<%= @link.short_url %>">http://localhost:3000/links/<%= request.url(:port) + @link.short_url %></a>
+  app/views/links/show_modified_route.html.erb:1:in `_app_views_links_show_modified_route_html_erb__2524087017781051093_70295507150440'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (176.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (126.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (310.5ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:13:29 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (9.0ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (21.5ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 9.0ms)
+
+ActionView::Template::Error (no implicit conversion of Fixnum into String):
+    1: <a href="/links/<%= @link.short_url %>">http://localhost:3000/links/<%= request.host + ":" + request.port + "/links/" + @link.short_url %></a>
+  app/views/links/show_modified_route.html.erb:1:in `+'
+  app/views/links/show_modified_route.html.erb:1:in `_app_views_links_show_modified_route_html_erb__2524087017781051093_70295501579080'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (116.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (92.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (211.3ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:14:00 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (4.0ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 70ms (Views: 61.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:15:15 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 62ms (Views: 34.3ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:15:55 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 49ms (Views: 31.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:16:10 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mLink Load (2.5ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 43ms (Views: 38.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/show-modified-route/6" for ::1 at 2018-12-06 10:16:13 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mLink Load (0.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 52ms (Views: 49.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:16:16 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[36mLink Load (0.9ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.9ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:39:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (107.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (186.8ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:18:22 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 15ms (ActiveRecord: 5.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:43:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (106.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (96.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (215.0ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:18:51 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[36mLink Load (0.5ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 37ms (ActiveRecord: 29.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:44:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (130.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (111.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (246.9ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:18:52 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[35mLink Load (0.2ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:44:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (107.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (100.1ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (223.4ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:25:30 -0500
+
+NameError (undefined local variable or method `show_by_short_url' for #<ActionDispatch::Routing::Mapper:0x007fdde4ff1b70>):
+  config/routes.rb:59:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (21.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (211.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (96.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (216.1ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:25:57 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[36mLink Load (0.4ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 17ms (ActiveRecord: 6.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:44:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (101.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (84.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (197.6ms)
+
+
+Started GET "/show-by-short-url/ZyZTX5" for ::1 at 2018-12-06 10:26:16 -0500
+Processing by LinksController#show_by_short_url as HTML
+  Parameters: {"short_url"=>"ZyZTX5"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `click_count' for nil:NilClass):
+  app/controllers/links_controller.rb:21:in `show_by_short_url'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (106.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.2ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (92.6ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (208.6ms)
+
+
+Started GET "/show-by-short-url/ZyZTX5" for ::1 at 2018-12-06 10:26:56 -0500
+Processing by LinksController#show_by_short_url as HTML
+  Parameters: {"short_url"=>"ZyZTX5"}
+  [1m[35mLink Load (13.3ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."short_url" = $1 LIMIT 1  [["short_url", "ZyZTX5"]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2  [["click_count", 3], ["id", 6]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://kitsplit.com
+Completed 302 Found in 51ms (ActiveRecord: 25.7ms)
+
+
+Started GET "/links/ZyZTX5" for ::1 at 2018-12-06 10:27:05 -0500
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"ZyZTX5"}
+  [1m[35mLink Load (0.4ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Link with 'id'=ZyZTX5):
+  app/controllers/links_controller.rb:44:in `set_link'
+
+
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (163.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (107.3ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (232.5ms)
+
+
+Started GET "/" for ::1 at 2018-12-06 10:27:45 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/elizabeth/.rvm/gems/ruby-2.2.0/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links/new" for ::1 at 2018-12-06 10:27:49 -0500
+Processing by LinksController#new as HTML
+  Rendered links/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 115ms (Views: 92.7ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/links" for ::1 at 2018-12-06 10:28:06 -0500
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3ReMbBg5BpObc7246xFjCe70iqJBklIBhutL2Ae7ttoueP3kbfirQ1MrQs8y6VdMNscMEU6tiNXNsYDsXMXqYg==", "link"=>{"long_url"=>"google.com"}, "commit"=>"Create Link"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.8ms)[0m  INSERT INTO "links" ("long_url", "short_url") VALUES ($1, $2) RETURNING "id"  [["long_url", "google.com"], ["short_url", "PIG5h4"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/show-modified-route/PIG5h4
+Completed 302 Found in 11ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/show-modified-route/PIG5h4" for ::1 at 2018-12-06 10:28:06 -0500
+Processing by LinksController#show_modified_route as HTML
+  Parameters: {"short_url"=>"PIG5h4"}
+  [1m[35mLink Load (0.5ms)[0m  SELECT  "links".* FROM "links" WHERE "links"."short_url" = $1 LIMIT 1  [["short_url", "PIG5h4"]]
+  Rendered links/show_modified_route.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 39ms (Views: 36.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/short-url/PIG5h4" for ::1 at 2018-12-06 10:28:09 -0500
+Processing by LinksController#show_by_short_url as HTML
+  Parameters: {"short_url"=>"PIG5h4"}
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."short_url" = $1 LIMIT 1[0m  [["short_url", "PIG5h4"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2[0m  [["click_count", 1], ["id", 7]]
+  [1m[35m (8.1ms)[0m  COMMIT
+Redirected to http://google.com
+Completed 302 Found in 11ms (ActiveRecord: 8.7ms)
+
+
+Started GET "/short-url/PIG5h4" for ::1 at 2018-12-06 10:28:09 -0500
+Processing by LinksController#show_by_short_url as HTML
+  Parameters: {"short_url"=>"PIG5h4"}
+  [1m[36mLink Load (0.4ms)[0m  [1mSELECT  "links".* FROM "links" WHERE "links"."short_url" = $1 LIMIT 1[0m  [["short_url", "PIG5h4"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "links" SET "click_count" = $1 WHERE "links"."id" = $2[0m  [["click_count", 2], ["id", 7]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://google.com
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms)
