@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181206031130) do
+ActiveRecord::Schema.define(version: 20181206141313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "links", force: :cascade do |t|
-    t.string "short_url"
-    t.string "long_url"
+    t.string  "short_url"
+    t.string  "long_url"
+    t.integer "click_count", default: 0
   end
 
 end
